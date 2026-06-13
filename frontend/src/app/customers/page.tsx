@@ -26,8 +26,8 @@ export default function CustomersPage() {
   const fetchData = async () => {
     try {
       setLoading(true);
-      const custRes = await axios.get("http://localhost:5000/api/customers");
-      const orderRes = await axios.get("http://localhost:5000/api/orders");
+      const custRes = await axios.get("https://nexo-crm-jjow.onrender.com/api/customers");
+      const orderRes = await axios.get("https://nexo-crm-jjow.onrender.com/api/orders");
       setCustomers(custRes.data);
       setOrders(orderRes.data);
     } catch (err) {
@@ -44,7 +44,7 @@ export default function CustomersPage() {
   const handleSeedData = async () => {
     try {
       setSeeding(true);
-      await axios.post("http://localhost:5000/api/customers/ingest-sample");
+      await axios.post("https://nexo-crm-jjow.onrender.com/api/customers/ingest-sample");
       await fetchData();
     } catch (err) {
       console.error("Error seeding data", err);

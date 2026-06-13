@@ -1,7 +1,7 @@
 import { Request, Response } from "express";
 import axios from "axios";
 
-const CRM_CALLBACK_URL = "http://localhost:5000/api/callbacks/receipt";
+const CRM_CALLBACK_URL = "https://nexo-crm-jjow.onrender.com/api/callbacks/receipt";
 
 // Helper for setTimeout using promises (optional) or just standard setTimeout
 const delay = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));

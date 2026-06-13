@@ -48,7 +48,7 @@ export default function SandboxPage() {
   const fetchLogs = async () => {
     try {
       setLoading(true);
-      const res = await axios.get("http://localhost:5000/api/callbacks/logs");
+      const res = await axios.get("https://nexo-crm-jjow.onrender.com/api/callbacks/logs");
       setLogs(res.data);
       
       // Keep selected log updated if already selected
@@ -78,7 +78,7 @@ export default function SandboxPage() {
     
     // Simulate "clicked" callback from link redirect
     try {
-      await axios.post("http://localhost:5000/api/callbacks/receipt", {
+      await axios.post("https://nexo-crm-jjow.onrender.com/api/callbacks/receipt", {
         trackingId: selectedLog.trackingId,
         status: "clicked",
       });
@@ -105,7 +105,7 @@ export default function SandboxPage() {
       setPurchasing(true);
       
       // Send Order request to CRM. The CRM order API will process attribution using the trackingId
-      await axios.post("http://localhost:5000/api/orders", {
+      await axios.post("https://nexo-crm-jjow.onrender.com/api/orders", {
         customerId: selectedLog.customerId._id,
         amount: product.price,
         items: 1,

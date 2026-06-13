@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const CRM_URL = "http://localhost:5000/api";
+const CRM_URL = "https://nexo-crm-jjow.onrender.com/api";
 
 const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
 

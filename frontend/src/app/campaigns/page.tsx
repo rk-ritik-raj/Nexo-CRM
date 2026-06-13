@@ -70,8 +70,8 @@ export default function CampaignsPage() {
   const fetchCampaignsAndSegments = async () => {
     try {
       setLoading(true);
-      const campRes = await axios.get("http://localhost:5000/api/campaigns");
-      const segRes = await axios.get("http://localhost:5000/api/segments");
+      const campRes = await axios.get("https://nexo-crm-jjow.onrender.com/api/campaigns");
+      const segRes = await axios.get("https://nexo-crm-jjow.onrender.com/api/segments");
       setCampaigns(campRes.data);
       setSegments(segRes.data);
     } catch (err) {
@@ -101,7 +101,7 @@ export default function CampaignsPage() {
   const loadCampaignDetails = async (id: string, showLoader = true) => {
     try {
       if (showLoader) setDetailLoading(true);
-      const res = await axios.get(`http://localhost:5000/api/campaigns/${id}`);
+      const res = await axios.get(`https://nexo-crm-jjow.onrender.com/api/campaigns/${id}`);
       setCampaignDetails(res.data);
     } catch (err) {
       console.error("Error fetching campaign details", err);
@@ -119,7 +119,7 @@ export default function CampaignsPage() {
       
       const segmentDesc = segments.find(s => s._id === selectedSegmentId)?.description || "our customer database";
       
-      const res = await axios.post("http://localhost:5000/api/ai/generate-copy", {
+      const res = await axios.post("https://nexo-crm-jjow.onrender.com/api/ai/generate-copy", {
         channel,
         segmentDescription: segmentDesc,
         offer: aiOffer,
@@ -143,7 +143,7 @@ export default function CampaignsPage() {
 
     try {
       setError("");
-      const res = await axios.post("http://localhost:5000/api/campaigns", {
+      const res = await axios.post("https://nexo-crm-jjow.onrender.com/api/campaigns", {
         name,
         description,
         segmentId: selectedSegmentId || null,
@@ -176,13 +176,13 @@ export default function CampaignsPage() {
   const handleLaunchCampaign = async (id: string) => {
     try {
       setError("");
-      await axios.post(`http://localhost:5000/api/campaigns/${id}/send`);
+      await axios.post(`https://nexo-crm-jjow.onrender.com/api/campaigns/${id}/send`);
       
       // Load updated details immediately
       loadCampaignDetails(id);
       
       // Refresh list
-      const campRes = await axios.get("http://localhost:5000/api/campaigns");
+      const campRes = await axios.get("https://nexo-crm-jjow.onrender.com/api/campaigns");
       setCampaigns(campRes.data);
     } catch (err: any) {
       setError(err.response?.data?.message || "Failed to launch campaign");
@@ -196,7 +196,7 @@ export default function CampaignsPage() {
     text = text.replace(/{totalSpend}/gi, "$380.00");
     text = text.replace(/{lastPurchaseDate}/gi, "06/08/2026");
     text = text.replace(/{city}/gi, "Mumbai");
-    return text + " Click here to shop: http://localhost:3000/sandbox?t=sample-token";
+    return text + " Click here to shop: https://nexo-crm-2.onrender.com/sandbox?t=sample-token";
   };
 
   return (

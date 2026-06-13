@@ -53,9 +53,9 @@ export default function DashboardPage() {
   const fetchDashboardData = async () => {
     try {
       setLoading(true);
-      const custRes = await axios.get("http://localhost:5000/api/customers");
-      const campRes = await axios.get("http://localhost:5000/api/campaigns");
-      const orderRes = await axios.get("http://localhost:5000/api/orders");
+      const custRes = await axios.get("https://nexo-crm-jjow.onrender.com/api/customers");
+      const campRes = await axios.get("https://nexo-crm-jjow.onrender.com/api/campaigns");
+      const orderRes = await axios.get("https://nexo-crm-jjow.onrender.com/api/orders");
 
       const customers = custRes.data;
       const camps = campRes.data;
@@ -118,7 +118,7 @@ export default function DashboardPage() {
     setChatLoading(true);
 
     try {
-      const res = await axios.post("http://localhost:5000/api/ai/copilot-chat", {
+      const res = await axios.post("https://nexo-crm-jjow.onrender.com/api/ai/copilot-chat", {
         message: textToSend,
         chatHistory: newHistory,
       });

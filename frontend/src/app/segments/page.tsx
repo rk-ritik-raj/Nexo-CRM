@@ -51,7 +51,7 @@ export default function SegmentsPage() {
   const fetchSegments = async () => {
     try {
       setLoading(true);
-      const res = await axios.get("http://localhost:5000/api/segments");
+      const res = await axios.get("https://nexo-crm-jjow.onrender.com/api/segments");
       setSegments(res.data);
     } catch (err) {
       console.error("Error fetching segments", err);
@@ -100,7 +100,7 @@ export default function SegmentsPage() {
     try {
       setPreviewing(true);
       setError("");
-      const res = await axios.post("http://localhost:5000/api/segments/preview", {
+      const res = await axios.post("https://nexo-crm-jjow.onrender.com/api/segments/preview", {
         rules,
       });
       setPreviewSize(res.data.size);
@@ -118,7 +118,7 @@ export default function SegmentsPage() {
     try {
       setTranslating(true);
       setError("");
-      const res = await axios.post("http://localhost:5000/api/ai/translate-segment", {
+      const res = await axios.post("https://nexo-crm-jjow.onrender.com/api/ai/translate-segment", {
         prompt: aiPrompt,
       });
 
@@ -127,7 +127,7 @@ export default function SegmentsPage() {
         setDescription(res.data.explanation || "");
         
         // Auto-run preview for user feedback
-        const previewRes = await axios.post("http://localhost:5000/api/segments/preview", {
+        const previewRes = await axios.post("https://nexo-crm-jjow.onrender.com/api/segments/preview", {
           rules: res.data.rules,
         });
         setPreviewSize(previewRes.data.size);
@@ -150,7 +150,7 @@ export default function SegmentsPage() {
 
     try {
       setError("");
-      await axios.post("http://localhost:5000/api/segments", {
+      await axios.post("https://nexo-crm-jjow.onrender.com/api/segments", {
         name,
         description,
         rules,
@@ -174,7 +174,7 @@ export default function SegmentsPage() {
     if (!confirm("Are you sure you want to delete this segment?")) return;
 
     try {
-      await axios.delete(`http://localhost:5000/api/segments/${id}`);
+      await axios.delete(`https://nexo-crm-jjow.onrender.com/api/segments/${id}`);
       fetchSegments();
     } catch (err) {
       console.error("Error deleting segment", err);

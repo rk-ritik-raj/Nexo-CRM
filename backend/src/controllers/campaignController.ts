@@ -22,8 +22,8 @@ const personalizeMessage = (template: string, customer: any, trackingId: string)
   text = text.replace(/{city}/gi, customer.city || "");
   
   // Append a standard tracking link if not already present in the template
-  const trackingLink = `http://localhost:3000/sandbox?t=${trackingId}`;
-  if (!text.includes("http://localhost:3000/sandbox")) {
+  const trackingLink = `https://nexo-crm-2.onrender.com/sandbox?t=${trackingId}`;
+  if (!text.includes("https://nexo-crm-2.onrender.com/sandbox")) {
     text = `${text} Click here to shop: ${trackingLink}`;
   }
   return text;
