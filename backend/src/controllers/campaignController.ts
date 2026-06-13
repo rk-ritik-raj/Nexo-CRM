@@ -144,7 +144,7 @@ export const sendCampaign = async (req: Request, res: Response) => {
 
         try {
           // POST to Channel Service
-          await axios.post("http://localhost:6000/api/send", {
+          await axios.post("https://nexo-crm-1.onrender.com/api/send", {
             trackingId,
             recipient: {
               name: customer.name,
