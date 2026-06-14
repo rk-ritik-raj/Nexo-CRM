@@ -19,7 +19,11 @@ const app = express();
 // app.use(cors());
 app.use(
   cors({
-    origin: "https://nexo-crm-2.onrender.com",
+    origin: [
+      "https://nexo-crm-2.onrender.com",
+      'https://nexo-crm-frontend.onrender.com'
+    ] // Update this to your frontend URL
+
     credentials: true,
   })
 );

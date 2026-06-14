@@ -174,7 +174,7 @@ export default function CustomersPage() {
                           </div>
                         </div>
                       </td>
-                      <td className="p-4">
+                      <td className="p-4">  
                         <div className="flex items-center gap-1.5 text-zinc-400 text-xs">
                           <MapPin className="h-3.5 w-3.5 text-zinc-500" />
                           {customer.city || "Unknown"}
